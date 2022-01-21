@@ -1,0 +1,3 @@
+#!/system/bin/sh
+
+settings put global battery_saver_constants "advertise_is_enabled=BOOLEAN,datasaver_disabled=BOOLEAN,enable_night_mode=BOOLEAN,launch_boost_disabled=BOOLEAN,vibration_disabled=BOOLEAN,animation_disabled=BOOLEAN,soundtrigger_disabled=BOOLEAN,fullbackup_deferred=BOOLEAN,keyvaluebackup_deferred=BOOLEAN,firewall_disabled=BOOLEAN,gps_mode=INTEGER,adjust_brightness_disabled=BOOLEAN,adjust_brightness_factor=FLOAT,force_all_apps_standby=BOOLEAN,force_background_check=BOOLEAN,optional_sensors_disabled=BOOLEAN,aod_disabled=BOOLEAN,quick_doze_enabled=BOOLEAN"
