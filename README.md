@@ -21,7 +21,7 @@ or
 
 this module contais also AuroraStore, in order to be able to retrieve thrusted applications from the PlayStore anonimously or with your account logged sandboxed
 since no Google sync will be allowed, to manage your contacts you should:
-- export you contacts from https://cotacts.google.com as vCard, then import the generated file in contacts application
+- export you contacts from https://contacts.google.com as vCard, then import the generated file in contacts application
 or
 - install MS Outlook as email client, grant "contacts access" sync will be restored (Outlook allows also you to access google calendar)
 
