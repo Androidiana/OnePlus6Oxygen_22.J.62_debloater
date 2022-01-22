@@ -5,9 +5,9 @@ make OxygenOS like pure AOSP
 tying to cleanup OxygenOS, removing all extra apks to make OOS like a pure Android AOSP build, no Google, no OnePlus add-ons
 
 ## modules
-- <a href="https://github.com/Psk-Ita/OnePlus6Oxygen_22.J.62_debloater/releases/latest">**Lite**</a> version, preserves PlayService, PlayStore and few  other common applications
+- <a href="https://github.com/Psk-Ita/OnePlus6Oxygen_22.J.62_debloater/releases/latest">**Lite**</a> version, preserves PlayService, PlayStore and few  other core applications
 
-- <a href="https://github.com/Psk-Ita/OnePlus6Oxygen_22.J.62_debloater/releases/latest">**Full**</a> version, goes deep, leaving a bone Android system
+- <a href="https://github.com/Psk-Ita/OnePlus6Oxygen_22.J.62_debloater/releases/latest">**Full**</a> version, goes deeper, leaving a bone Android system
 ### pay attention
 **Full** version will removes also File manager, Dialer, SMS, PlayStore, bla bla bla (you can check full list in the folder tree), so once flashed, before restarting, if you want preserve one of those, simply delete the related folder in /data/adb/modules/OnePlus6Oxygen... magisk module folder.
 - to restore **File Manager**, you should delete /data/adb/modules/OnePlus6Oxygen_..._debloat/**system/system_ext/priv/OPFilemanager**
