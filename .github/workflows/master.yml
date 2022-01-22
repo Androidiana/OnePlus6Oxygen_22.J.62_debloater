@@ -14,12 +14,12 @@ jobs:
       run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
     - name: Switch to Release Folder
       run: |
-        mv OnePlus6Oxygen_22.J.62_debloat/release/* ./release
-#        rm OnePlus6Oxygen_22.J.62_debloat
-#        cd release
-#        ls -la
-#    - name: Bump version and push tag
-#      uses: anothrNick/github-tag-action@master
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        REPO_OWNER: keithweaver
+        cd release
+        ls -la
+    - name: Zip Folder
+      run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO_OWNER: keithweaver
