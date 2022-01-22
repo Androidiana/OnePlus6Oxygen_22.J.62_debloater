@@ -15,6 +15,7 @@ jobs:
     - name: Zip Folder
       run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
     - name: Upload
+      if: github.event_name == 'release' && github.event.action == 'created'
       uses: djn24/add-asset-to-release@v1
       with:
         token: ${{secrets.GITHUB_TOKEN}}
