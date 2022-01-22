@@ -22,11 +22,14 @@ jobs:
         id: mVersion
         run: echo "::set-output name=version::$(grep "^version=" module.prop|cut -d'=' -f2)"
 
-      - name: Build project # This would actually build your project, using zip for an example artifact
-        run: zip -r "${{ steps.mId.outputs.id }}.v${{ steps.mVersion.outputs.version }}.zip" . -x "README.md" ".git/*" ".github/*" 
+      - name: Build Full Version
+        run: zip -r "${{ steps.mId.outputs.id }}.full.v${{ steps.mVersion.outputs.version }}.zip" . -x "README.md" ".git/*" ".github/*" 
+
+      - name: Build Light Version
+        run: zip -r "${{ steps.mId.outputs.id }}.light.v${{ steps.mVersion.outputs.version }}.zip" . -x "README.md" ".git/*" ".github/*" "/system/app/com.aurora.store/*" "/system/priv-app/CalendarProvider/*" "/system/priv-app/DiracAudioControlService/*" "/system/priv-app/DiracManager/*" "/system/priv-app/OnePlusCamera/*" "/system/priv-app/OnePlusCameraService/*" "/system/product/app/GoogleContactsSyncAdapter/*" "/system/product/app/WebViewGoogle/*" "/system/product/priv-app/GmsCore/*" "/system/product/priv-app/Phonesky/*" "/system/system_ext/app/DynamicDDSService/*" "/system/system_ext/app/OPFilemanager/*" "/system/system_ext/priv-app/Dialer/*" "/system/system_ext/priv-app/OPContacts/*" "/system/system_ext/priv-app/OPMms/" 
 
       - name: Create Release
-        id: create_release
+        id: create-release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,14 +37,26 @@ jobs:
           draft: false
           prerelease: false
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ steps.mVersion.outputs.version }}
-      - name: Upload Release Asset
-        id: upload-release-asset 
+          release_name: Release v${{ steps.mVersion.outputs.version }}
+
+      - name: Upload Release Asset Full
+        id: upload-release-full
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./${{ steps.mId.outputs.id }}.v${{ steps.mVersion.outputs.version }}.zip
-          asset_name: ${{ steps.mId.outputs.id }}.v${{ steps.mVersion.outputs.version }}.zip
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./${{ steps.mId.outputs.id }}.full.v${{ steps.mVersion.outputs.version }}.zip
+          asset_name: ${{ steps.mId.outputs.id }}.full.v${{ steps.mVersion.outputs.version }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset Light
+        id: upload-release-light
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ steps.mId.outputs.id }}.light.v${{ steps.mVersion.outputs.version }}.zip
+          asset_name: ${{ steps.mId.outputs.id }}.light.v${{ steps.mVersion.outputs.version }}.zip
           asset_content_type: application/zip
