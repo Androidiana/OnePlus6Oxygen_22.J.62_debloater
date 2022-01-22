@@ -2,7 +2,7 @@ name: DeployMaster
 on:
   push:
     branches:
-      - master
+    - master
     
 jobs:
   build:
