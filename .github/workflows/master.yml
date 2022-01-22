@@ -17,5 +17,5 @@ jobs:
     - name: moving
       run: mv OnePlus6Oxygen_22.J.62_debloat.zip ./..
     - name: deleting
-      run: cd .. | delete ./release      
+      run: cd .. | rm -rf ./release      
       
