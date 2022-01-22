@@ -9,6 +9,6 @@ jobs:
         steps:
         - uses: actions/checkout@v1
         - name: Zip Folder
-            run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip .
+        run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip .
         - name: Release to Github
-            run: echo "Release"
+        run: echo "Release"
