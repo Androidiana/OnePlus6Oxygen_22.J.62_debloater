@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Zip Folder
-      run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
     - name: Create Release Folder
-      run: rsync ./OnePlus6Oxygen_22.J.62_debloat.zip ./release
+      run: rsync ./OnePlus6Oxygen_22.J.62_debloat/* ./release
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@master
       env:
