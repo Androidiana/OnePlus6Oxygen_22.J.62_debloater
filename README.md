@@ -5,7 +5,7 @@ make OxygenOS like pure AOSP
 tying to cleanup OxygenOS
 
 ### notes
-hope to generate a Magisk module that, using ".replace" approach, removes all extra apks to make OOS like an pure Android AOSP build, no Google, no OnePlus add-ons
+hope to generate a Magisk module that, using ".replace" approach, removes all extra apks to make OOS like a pure Android AOSP build, no Google, no OnePlus add-ons
 
 ### please
 pay attention, it will removes also File manager, Dialer, SMS, PlayStore, bla bla bla (you can check full list in the folder tree)
