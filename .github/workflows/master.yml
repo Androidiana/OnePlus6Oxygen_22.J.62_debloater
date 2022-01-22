@@ -14,10 +14,10 @@ jobs:
       run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
     - name: Switch to Release Folder
       run: |
+        mv ./release/OnePlus6Oxygen_22.J.62_debloat/* ./release
+        rm ./release/OnePlus6Oxygen_22.J.62_debloat
         cd release
         ls -la
-        mv ./OnePlus6Oxygen_22.J.62_debloat/* .
-        rm ./OnePlus6Oxygen_22.J.62_debloat
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@master
       env:
