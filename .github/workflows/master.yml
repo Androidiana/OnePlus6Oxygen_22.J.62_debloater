@@ -1,6 +1,6 @@
 name: MasterDeployCI
 on:
-  release:
+  push:
     branches:
     - main
     
@@ -14,8 +14,8 @@ jobs:
       run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
     - name: Zip Folder
       run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
-    - name: Upload
-      uses: djn24/add-asset-to-release@v1
-      with:
-        token: ${{secrets.GITHUB_TOKEN}}
-        path: OnePlus6Oxygen_22.J.62_debloat.zip
+    - name: moving
+      run: mv OnePlus6Oxygen_22.J.62_debloat.zip ./..
+    - name: deleting
+      run: cd .. | delete ./release      
+      
