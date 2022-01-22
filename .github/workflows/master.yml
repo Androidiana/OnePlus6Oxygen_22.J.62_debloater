@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Create Release Folder
-      run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
+      run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' ./ ./release
         ls ./release 
 #    - name: Switch to Release Folder
 #      run: |
