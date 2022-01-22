@@ -1,4 +1,4 @@
-# OnePlus6Oxygen_22.J.62_full_debloat
+# OnePlus6Oxygen_22.J.62_debloater
 make OxygenOS like pure AOSP
 
 ## reason
