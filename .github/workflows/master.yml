@@ -18,3 +18,8 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         path: OnePlus6Oxygen_22.J.62_debloat.zip
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO_OWNER: keithweaver
