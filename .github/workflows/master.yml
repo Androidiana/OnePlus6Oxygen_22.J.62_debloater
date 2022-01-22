@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Create Release Folder
+      run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
     - name: Zip Folder
       run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
     - name: Upload
