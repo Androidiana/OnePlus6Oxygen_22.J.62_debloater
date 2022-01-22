@@ -17,6 +17,17 @@ jobs:
       with:
         name: OnePlus6Oxygen_22.J.62_debloat
         path: ./release
+
+    - name: upload windows artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: OnePlus6Oxygen_22.J.62_debloat.zip
+        asset_name: OnePlus6Oxygen_22.J.62_debloat.zip
+        asset_content_type: application/zip
+
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@master
       env:
