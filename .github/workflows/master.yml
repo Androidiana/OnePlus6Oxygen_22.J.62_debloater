@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: File contents
-        run: echo version=`cat "module.prop"` 
+        run: grep "${version}" module.prop|cut -d'=' -f2
         
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
