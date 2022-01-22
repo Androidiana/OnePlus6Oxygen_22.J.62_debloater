@@ -1,8 +1,8 @@
-name: DeployMaster
+name: MasterDeployCI
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
