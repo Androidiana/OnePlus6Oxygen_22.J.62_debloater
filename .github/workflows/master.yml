@@ -1,8 +1,9 @@
 name: Build Module
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+    - main
 
 jobs:
   build:
@@ -16,6 +17,14 @@ jobs:
           REPO_OWNER: keithweaver
       - name: Checkout Repo
         uses: actions/checkout@v2
+      - name: Read file contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "package.json"
+      - name: File contents
+        run: echo "${ steps.read_file.outputs.contents }"
+
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
       - name: Create Release
