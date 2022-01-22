@@ -9,13 +9,9 @@ jobs:
     name: generate zip file
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Create Release Folder
-      run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
     - name: Zip Folder
       run: zip -r OnePlus6Oxygen_22.J.62_debloat.zip . -x ".git/*" ".github/*"
-    - name: moving
-      run: mv OnePlus6Oxygen_22.J.62_debloat.zip ./..
-    - name: deleting
-      run: cd .. | rm -rf ./release      
-      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        path: OnePlus6Oxygen_22.J.62_debloat.zip
