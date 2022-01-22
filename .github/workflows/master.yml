@@ -5,30 +5,32 @@ on:
     - main
     
 jobs:
-  build:
-    name: generate zip file
+  build:    
+    name: Build
     runs-on: ubuntu-latest
     steps:
+
     - uses: actions/checkout@v1
-    - name: Create Release Folder
+    - name: CreateReleaseFolder
       run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
-    - name: Upload a Build Artifact
+
+    - name: BuildArtifact
       uses: actions/upload-artifact@v2.3.1
       with:
         name: OnePlus6Oxygen_22.J.62_debloat
         path: ./release
 
-    - name: upload windows artifact
+    - name: UploadArtifact
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ steps.upload-artifact.outputs.upload_url }}
         asset_path: OnePlus6Oxygen_22.J.62_debloat.zip
         asset_name: OnePlus6Oxygen_22.J.62_debloat.zip
         asset_content_type: application/zip
 
-    - name: Bump version and push tag
+    - name: BumpVersion_PushTag
       uses: anothrNick/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
