@@ -16,13 +16,6 @@ tying to cleanup OxygenOS, removing all extra apks to make OOS like a pure Andro
 - to restore **Contacts**, you should delete you can delete /data/adb/modules/OnePlus6Oxygen_..._debloat/**system/system_ext/priv-app/OPContacts**
 - to restore **SMS**, you should delete /data/adb/modules/OnePlus6Oxygen_..._debloat/**system/system_ext/priv-app/OPMms**
 - etc...
-- to restore **WebViewer**, you should:
-
-  delete folder /data/adb/modules/OnePlus6Oxygen_..._debloat/**system/product/app/WebViewGoogle**
-
-  or
-  
-  install <a href="https://github.com/bromite/bromite/releases/latest">arm64_SystemWebView.apk</a> from Bromite repo, then move the related folder from /data/app to /data/adb/modules/OnePlus6Oxygen_..._debloat/**system/app**
 
 ### addons
 this module contais also:
@@ -32,13 +25,29 @@ this module contais also:
 ### full version extra notes
 - **maps-support**, in any case, if you like the Google Maps
 - **AuroraStore**, to access a thrusted repository (the PlayStore) anonimously or with your account logged sandboxed
-since **no Google sync** will be allowed, to manage your contacts you should:
-- export you contacts from https://contacts.google.com as vCard, then import the generated file in contacts application
 
-or
+#
 
-- install **MS Outlook** as email client, grant "contacts access" sync will be restored (Outlook allows also you to access google calendar)
+  <ul>since <b>no Google sync</b> will be allowed, to manage your contacts you should:
+
+  <li>export you contacts from https://contacts.google.com as vCard, then import the generated file in contacts application</li>
+  or
+
+  <li> install <a href="https://play.google.com/store/apps/details?id=com.microsoft.office.outlook">MS Outlook</a> as email client, grant "contacts access" sync will be restored (Outlook allows also you to access google calendar)</li>
+  </ul>
+
+#
+
+  <ul>to restore <b>WebViewer</b>, you should:
+  
+  <li>delete folder /data/adb/modules/OnePlus6Oxygen_..._debloat/<b>system/product/app/WebViewGoogle</b></li>
+  or  
+
+  <li>install <a href="https://github.com/bromite/bromite/releases/latest">arm64_SystemWebView.apk</a> from Bromite repo, then move the related folder from /data/app to /data/adb/modules/OnePlus6Oxygen_..._debloat/<b>system/app</b></li>
+  </ul>
+
+#
 
 what else?
 
-enjoy!!!
+**enjoy**!!!
