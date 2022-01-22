@@ -8,9 +8,8 @@ jobs:
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
       - uses: actions/checkout@v1
-      - name: Create Release Folder
+      - name: Checkout code
         run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
