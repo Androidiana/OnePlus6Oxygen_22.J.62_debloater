@@ -12,12 +12,13 @@ jobs:
     - uses: actions/checkout@v1
     - name: Create Release Folder
       run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
-    - name: Switch to Release Folder
-      run: |
-        mv ./release/OnePlus6Oxygen_22.J.62_debloat/* ./release
-        rm ./release/OnePlus6Oxygen_22.J.62_debloat
-        cd release
-        ls -la
+        ls ./release 
+#    - name: Switch to Release Folder
+#      run: |
+#        mv ./release/OnePlus6Oxygen_22.J.62_debloat/* ./release
+#        rm ./release/OnePlus6Oxygen_22.J.62_debloat
+#        cd release
+#        ls -la
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@master
       env:
