@@ -1,8 +1,8 @@
-name: MasterDeployCI
+name: DeployMaster
 on:
   push:
-    tags:
-    - 'v*'
+    branches:
+      - master
     
 jobs:
   build:
@@ -34,3 +34,8 @@ jobs:
           asset_path: ./my-artifact.zip
           asset_name: my-artifact.zip
           asset_content_type: application/zip
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: keithweaver
