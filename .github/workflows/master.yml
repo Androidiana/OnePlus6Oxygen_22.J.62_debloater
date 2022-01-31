@@ -22,11 +22,11 @@ jobs:
         id: mVersion
         run: echo "::set-output name=version::$(grep "^version=" module.prop|cut -d'=' -f2)"
 
-      - name: Build Lite Version
-        run: zip -r "${{ steps.mId.outputs.id }}.lite.v${{ steps.mVersion.outputs.version }}.zip" . -x "README.md" ".git/*" ".github/*" "${{ steps.mId.outputs.id }}.full.v${{ steps.mVersion.outputs.version }}.zip" "/system/app/com.aurora.store/*" "/system/framework/*" "/system/priv-app/CalendarProvider/*" "/system/priv-app/DiracAudioControlService/*" "/system/priv-app/DiracManager/*" "/system/priv-app/OnePlusCamera/*" "/system/priv-app/OnePlusCameraService/*" "/system/product/app/GoogleContactsSyncAdapter/*" "/system/product/app/WebViewGoogle/*" "/system/product/priv-app/GmsCore/*" "/system/product/priv-app/Phonesky/*" "/system/system_ext/app/DynamicDDSService/*" "/system/system_ext/app/OPFilemanager/*" "/system/system_ext/priv-app/Dialer/*" "/system/system_ext/priv-app/OPContacts/*" "/system/system_ext/priv-app/OPMms/*"
+#      - name: Build Lite Version
+#        run: zip -r "${{ steps.mId.outputs.id }}.lite.${{ steps.mVersion.outputs.version }}.zip" . -x "README.md" ".git/*" ".github/*" "${{ steps.mId.outputs.id }}.full.${{ steps.mVersion.outputs.version }}.zip" "/system/app/com.aurora.store/*" "/system/framework/*" "/system/priv-app/CalendarProvider/*" "/system/priv-app/DiracAudioControlService/*" "/system/priv-app/DiracManager/*" "/system/priv-app/OnePlusCamera/*" "/system/priv-app/OnePlusCameraService/*" "/system/product/app/GoogleContactsSyncAdapter/*" "/system/product/app/WebViewGoogle/*" "/system/product/priv-app/GmsCore/*" "/system/product/priv-app/Phonesky/*" "/system/system_ext/app/DynamicDDSService/*" "/system/system_ext/app/OPFilemanager/*" "/system/system_ext/priv-app/Dialer/*" "/system/system_ext/priv-app/OPContacts/*" "/system/system_ext/priv-app/OPMms/*"
 
       - name: Build Full Version
-        run: zip -r "${{ steps.mId.outputs.id }}.full.v${{ steps.mVersion.outputs.version }}.zip" . -x "README.md" ".git/*" ".github/*" "${{ steps.mId.outputs.id }}.lite.v${{ steps.mVersion.outputs.version }}.zip"
+        run: zip -r "${{ steps.mId.outputs.id }}.${{ steps.mVersion.outputs.version }}.zip" . -x "README.md" ".git/*" ".github/*" "${{ steps.mId.outputs.id }}.${{ steps.mVersion.outputs.version }}.zip"
         
       - name: Create Release
         id: create-release
@@ -37,18 +37,18 @@ jobs:
           draft: false
           prerelease: false
           tag_name: ${{ steps.mVersion.outputs.version }}
-          release_name: Release v${{ steps.mVersion.outputs.version }}
+          release_name: Release ${{ steps.mVersion.outputs.version }}
 
-      - name: Upload Release Asset Lite
-        id: upload-release-lite
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ./${{ steps.mId.outputs.id }}.lite.v${{ steps.mVersion.outputs.version }}.zip
-          asset_name: ${{ steps.mId.outputs.id }}.lite.v${{ steps.mVersion.outputs.version }}.zip
-          asset_content_type: application/zip
+#      - name: Upload Release Asset Lite
+#        id: upload-release-lite
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          upload_url: ${{ steps.create-release.outputs.upload_url }}
+#          asset_path: ./${{ steps.mId.outputs.id }}.lite.${{ steps.mVersion.outputs.version }}.zip
+#          asset_name: ${{ steps.mId.outputs.id }}.lite.${{ steps.mVersion.outputs.version }}.zip
+#          asset_content_type: application/zip
 
       - name: Upload Release Asset Full
         id: upload-release-full
@@ -57,7 +57,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }} 
-          asset_path: ./${{ steps.mId.outputs.id }}.full.v${{ steps.mVersion.outputs.version }}.zip
-          asset_name: ${{ steps.mId.outputs.id }}.full.v${{ steps.mVersion.outputs.version }}.zip
+          asset_path: ./${{ steps.mId.outputs.id }}.${{ steps.mVersion.outputs.version }}.zip
+          asset_name: ${{ steps.mId.outputs.id }}.${{ steps.mVersion.outputs.version }}.zip
           asset_content_type: application/zip
 
