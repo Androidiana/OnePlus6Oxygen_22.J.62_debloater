@@ -1,8 +1,8 @@
-# OnePlus6Oxygen_22.J.62_debloater
-make OxygenOS like pure AOSP
+# Derpfest_op7tpro_debloater
+degoogle rom
 
 ## reason
-tying to cleanup OxygenOS, removing all extra apks to make OOS like a pure Android AOSP build, no Google, no OnePlus add-ons
+tying to cleanup rom, removing all extra apks to make OOS like a pure Android AOSP build, no Google, no OnePlus add-ons
 
 ## modules
 - **Lite** option, preserves PlayService, PlayStore and few  other core applications
